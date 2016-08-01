@@ -130,7 +130,7 @@ int GetEditNum(int edit_indicator, HWND hwndDlg)
 
 bool SetEditNum(int edit_indicator, HWND hwndDlg, int i)
 {
-	if (i > 9 || i < 1)
+	if (i > 9 || i < 0)
 		return false;
 	
 	char c[8];
@@ -153,6 +153,9 @@ bool GetEntireBoard(HWND hwndDlg)
 
 			if (board[x][y] == -1)
 				return false;
+
+			if (board[x][y] != 0)
+				do_not_change[x][y] = true;
 		}
 	}
 
@@ -202,6 +205,10 @@ INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPara
 	case WM_INITDIALOG:
 	{
 		SetEditsLimit(hwndDlg);
+
+		//SetEntireBoard(hwndDlg); // HACK(Daniel): this will set the entire displayed board to zero since the variable is initialized to zero
+		// NOTE(Daniel): if we uncomment it becomes annoying to enter new numbers
+
 		return TRUE;
 	} break;
 	
@@ -215,21 +222,31 @@ INT_PTR CALLBACK DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPara
 			{
 				GetEntireBoard(hwndDlg);
 
-				RecursiveBacktrackDS rbds = { 0, 0, true, false };
+				RecursiveBacktrackDS rbds = { 0, 0, true, false, false };
 				RecursiveBacktrackFill(&rbds);
+				
+				if (rbds.impossible)
+				{
+					MessageBox(0, "Board has no solution...", "Message", 0);
+				}
+				
+				SetEntireBoard(hwndDlg);
 				
 				if (!CheckBoard())
 				{
-					MessageBox(0, "Board Not Ok!!!", "Message", 0);
+					MessageBox(0, "Board not Ok!!!", "Message", 0);
 				}
 				else
 				{
 					MessageBox(0, "Board Ok!!!", "Message", 0);
 				}
-				
-				SetEntireBoard(hwndDlg);
 
 				SetFocus(hwndDlg);
+			} break;
+
+			case ID_BTN_EXIT:
+			{
+				running = false;
 			} break;
 		}
 

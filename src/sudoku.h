@@ -2,35 +2,11 @@
 
 extern int board[9][9];
 
-#define REJECTED_ALL { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-#define REJECTED_ALL_ROW { REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL }
+#define PROBABLY_IMPOSSIBLE_MAGIC_NUM 499999
+extern int check_if_impossible;
 
-static bool rejected_nums[9][9][9] =
-{
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-	REJECTED_ALL_ROW,
-};
-
-#define DO_NOT_CHANGE_ROW { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-static bool do_not_change[9][9] =
-{
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW,
-	DO_NOT_CHANGE_ROW
-};
+extern bool rejected_nums[9][9][9];
+extern bool do_not_change[9][9];
 
 typedef struct
 {
@@ -41,6 +17,7 @@ typedef struct
 	int y;
 	bool moving_forwards;
 	bool brk;
+	bool impossible;
 } RecursiveBacktrackDS;
 
 /*bool IsOnlyNumberOnRow(int n, int x, int y);

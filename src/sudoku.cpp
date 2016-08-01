@@ -1,6 +1,37 @@
 #include "sudoku.h"
 
 int board[9][9] = { 0 };
+int check_if_impossible = 0;
+
+#define REJECTED_ALL { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+#define REJECTED_ALL_ROW { REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL, REJECTED_ALL }
+
+bool rejected_nums[9][9][9] =
+{
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+	REJECTED_ALL_ROW,
+};
+
+#define DO_NOT_CHANGE_ROW { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+bool do_not_change[9][9] =
+{
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW,
+	DO_NOT_CHANGE_ROW
+};
 
 bool IsOnlyNumberOnRow(int n, int x, int y)
 {
@@ -110,6 +141,15 @@ bool MoveToPrevSlot(RecursiveBacktrackDS *data)
 
 void RecursiveBacktrackFill(RecursiveBacktrackDS *data)
 {
+	check_if_impossible++;
+	if (check_if_impossible >= PROBABLY_IMPOSSIBLE_MAGIC_NUM)
+	{
+		data->impossible = true;
+	}
+
+	if (data->impossible)
+		return;
+
 	if (data->brk)
 		return;
 
