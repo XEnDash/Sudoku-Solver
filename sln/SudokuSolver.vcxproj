@@ -83,8 +83,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\sudoku.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\sudoku.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
