@@ -1,0 +1,9 @@
+This version requires 2gb of ram at least, It uses it all on the stack.
+
+This was done specifically to solve the accompanied problem.jpg made by Arto Inkala. to show the algorithm does indeed solve the problem, if you have enough memory.
+
+This is probably not ok for distribution
+
+sources:
+http://www.telegraph.co.uk/news/science/science-news/9359579/Worlds-hardest-sudoku-can-you-crack-it.html
+http://www.telegraph.co.uk/news/science/science-news/9360022/Worlds-hardest-sudoku-the-answer.html

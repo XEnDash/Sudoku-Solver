@@ -2,7 +2,7 @@
 
 extern int board[9][9];
 
-#define PROBABLY_IMPOSSIBLE_MAGIC_NUM 499999
+#define PROBABLY_IMPOSSIBLE_MAGIC_NUM 99499999
 extern int check_if_impossible;
 
 extern bool rejected_nums[9][9][9];

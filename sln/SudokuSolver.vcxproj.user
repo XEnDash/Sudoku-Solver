@@ -8,6 +8,11 @@
     <LocalDebuggerWorkingDirectory>C:\Users\daniel\Desktop\SudokuSolver\bin\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Extreme|Win32'">
+    <LocalDebuggerCommand>SudokuSolver.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>C:\Users\daniel\Desktop\SudokuSolver\extreme\bin\</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommand>SudokuSolver.exe</LocalDebuggerCommand>
     <LocalDebuggerWorkingDirectory>C:\Users\daniel\Desktop\SudokuSolver\release\bin\</LocalDebuggerWorkingDirectory>
