@@ -10,7 +10,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommand>SudokuSolver.exe</LocalDebuggerCommand>
-    <LocalDebuggerWorkingDirectory>C:\Users\daniel\Desktop\SudokuSolver\bin\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>C:\Users\daniel\Desktop\SudokuSolver\release\bin\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
